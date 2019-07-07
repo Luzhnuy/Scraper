@@ -7,7 +7,7 @@ class YellowPagesSpider(CrawlSpider):
     name = "yp"
     start_urls = [
         "https://www.yellowpages.com/austin-tx/plumbers",
-        # "https://www.yellowpages.com/austin-tx/plumbers?page=2"
+        
     ]
     rules = (
         Rule(LinkExtractor(allow=('page=\d+',)), callback='parse_page'),
@@ -37,9 +37,7 @@ class YellowPagesSpider(CrawlSpider):
                 except:
                     pnone = ""
                 title = re.sub(r'[0-9.]','', title)
-                print(title)
-                print(phone)
-                print(location)
+
                 title = title.replace('\u00a0','')
                 scraped_data = {
                     title : {
